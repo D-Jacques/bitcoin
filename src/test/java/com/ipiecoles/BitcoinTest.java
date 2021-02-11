@@ -25,7 +25,7 @@ public class BitcoinTest {
         //When
 
         //Resultat de la request
-        BitcoinOutput data = bitcoin.getBitcoin(bitcoinData);
+        BitcoinOutput data = bitcoin.getBitcoin(bitcoinData, courtBC);
 
         //Then
 

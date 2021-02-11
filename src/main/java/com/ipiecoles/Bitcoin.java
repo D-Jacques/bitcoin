@@ -1,5 +1,7 @@
 package com.ipiecoles;
 
+import com.owlike.genson.Genson;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,9 +12,19 @@ import java.util.StringJoiner;
 
 public class Bitcoin {
 
-    public BitcoinOutput getBitcoin(BitcoinData bitcoinData){
+    public BitcoinOutput getBitcoin(BitcoinData bitcoinData, String courtBC){
 
-        return null;
+        Genson genson = new Genson();
+        Map<String, Double> map = genson.deserialize(courtBC, Map.class);
+
+        BitcoinOutput bitcoinOutput = new BitcoinOutput();
+        for (String curency:bitcoinData.getCurrencyList()) {
+            Double taux  = map.get(curency);
+            bitcoinOutput.setBitcoinAmount(bitcoinData.getBitcoinAmount());
+            bitcoinOutput.getCurrencyEquivalent().put(curency,bitcoinData.getBitcoinAmount()*taux);
+        }
+
+        return bitcoinOutput;
 
     }
 
