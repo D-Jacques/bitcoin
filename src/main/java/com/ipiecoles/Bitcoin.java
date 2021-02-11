@@ -12,14 +12,32 @@ import java.util.StringJoiner;
 
 public class Bitcoin {
 
+    public BitcoinOutput getBitcoinOutput(BitcoinData bitcoinData) throws IOException{
+        //Renvoi de l'url avec les types de currency demandés
+
+        String url = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=";
+
+        for(Integer i=0;i < bitcoinData.getCurrencyList().size();i++){
+            if(i==bitcoinData.getCurrencyList().size()-1){
+                url += bitcoinData.getCurrencyList().get(i);
+            } else {
+                url += bitcoinData.getCurrencyList().get(i)+",";
+            }
+        }
+
+        return getBitcoin(bitcoinData, this.getPageContents(url));
+
+                //getEphemeride(date, this.getPageContents("https://raw.githubusercontent.com/theofidry/ephemeris/master/src/ephemeris.json"));
+    }
+
     public BitcoinOutput getBitcoin(BitcoinData bitcoinData, String courtBC){
 
         Genson genson = new Genson();
-        Map<String, Double> map = genson.deserialize(courtBC, Map.class);
+        Map<String, Object> map = genson.deserialize(courtBC, Map.class);
 
         BitcoinOutput bitcoinOutput = new BitcoinOutput();
         for (String curency:bitcoinData.getCurrencyList()) {
-            Double taux  = map.get(curency);
+            Double taux = Double.parseDouble(map.get(curency).toString());
             bitcoinOutput.setBitcoinAmount(bitcoinData.getBitcoinAmount());
             bitcoinOutput.getCurrencyEquivalent().put(curency,bitcoinData.getBitcoinAmount()*taux);
         }
