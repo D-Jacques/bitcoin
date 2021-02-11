@@ -4,13 +4,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 import java.util.StringJoiner;
 
 public class Bitcoin {
 
-    public BitcoinData getBitcoin(){
+    public BitcoinOutput getBitcoin(BitcoinData bitcoinData){
 
-        return new BitcoinData();
+        return null;
 
     }
 
@@ -30,6 +32,6 @@ public class Bitcoin {
             }
         }
         return lines.toString();
-
     }
+
 }

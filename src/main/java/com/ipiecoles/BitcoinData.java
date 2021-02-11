@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class BitcoinData {
     private Double bitcoinAmount;
+    //à sérializer et déserializer
     private List<String> currencyList;
 
     public BitcoinData() {
