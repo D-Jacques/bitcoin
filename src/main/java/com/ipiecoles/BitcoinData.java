@@ -6,13 +6,12 @@ import java.util.Objects;
 public class BitcoinData {
     private Double bitcoinAmount;
     //à sérializer et déserializer
-    //A modifier en String
-    private List<String> currencyList;
+    private String currencyList;
 
     public BitcoinData() {
     }
 
-    public BitcoinData(Double bitcoinAmount, List<String> currencyList) {
+    public BitcoinData(Double bitcoinAmount, String currencyList) {
         this.bitcoinAmount = bitcoinAmount;
         this.currencyList = currencyList;
     }
@@ -25,11 +24,11 @@ public class BitcoinData {
         this.bitcoinAmount = bitcoinAmount;
     }
 
-    public List<String> getCurrencyList() {
+    public String getCurrencyList() {
         return currencyList;
     }
 
-    public void setCurrencyList(List<String> currencyList) {
+    public void setCurrencyList(String currencyList) {
         this.currencyList = currencyList;
     }
 
@@ -37,7 +36,7 @@ public class BitcoinData {
     public String toString() {
         return "BitcoinData{" +
                 "bitcoinAmount=" + bitcoinAmount +
-                ", currencyList=" + currencyList +
+                ", currencyList='" + currencyList + '\'' +
                 '}';
     }
 
@@ -46,13 +45,11 @@ public class BitcoinData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BitcoinData that = (BitcoinData) o;
-        return bitcoinAmount.equals(that.bitcoinAmount) &&
-                currencyList.equals(that.currencyList);
+        return Objects.equals(bitcoinAmount, that.bitcoinAmount) && Objects.equals(currencyList, that.currencyList);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(bitcoinAmount, currencyList);
     }
-
 }

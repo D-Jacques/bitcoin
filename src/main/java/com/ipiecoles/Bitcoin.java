@@ -6,39 +6,28 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class Bitcoin {
 
     public BitcoinOutput getBitcoinOutput(BitcoinData bitcoinData) throws IOException{
         //Renvoi de l'url avec les types de currency demandés
 
-        String url = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=";
-
-        for(Integer i=0;i < bitcoinData.getCurrencyList().size();i++){
-            if(i==bitcoinData.getCurrencyList().size()-1){
-                url += bitcoinData.getCurrencyList().get(i);
-            } else {
-                url += bitcoinData.getCurrencyList().get(i)+",";
-            }
-        }
+        String url = "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms="+bitcoinData.getCurrencyList();
 
         return getBitcoin(bitcoinData, this.getPageContents(url));
-
-                //getEphemeride(date, this.getPageContents("https://raw.githubusercontent.com/theofidry/ephemeris/master/src/ephemeris.json"));
-    }
+  }
 
     public BitcoinOutput getBitcoin(BitcoinData bitcoinData, String courtBC){
 
         Genson genson = new Genson();
         Map<String, Object> map = genson.deserialize(courtBC, Map.class);
 
-        System.out.println(map);
+        String[] tab = bitcoinData.getCurrencyList().split(",");
+        ArrayList<String> currencyList = new ArrayList<String>(Arrays.asList(tab));
 
         BitcoinOutput bitcoinOutput = new BitcoinOutput();
-        for (String curency:bitcoinData.getCurrencyList()) {
+        for (String curency:currencyList) {
             Double taux = Double.parseDouble(map.get(curency).toString());
             bitcoinOutput.setBitcoinAmount(bitcoinData.getBitcoinAmount());
             bitcoinOutput.getCurrenciesEquivalent().put(curency,bitcoinData.getBitcoinAmount()*taux);

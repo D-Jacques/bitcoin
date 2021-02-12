@@ -16,9 +16,7 @@ public class BitcoinTest {
         //
         Bitcoin bitcoin = new Bitcoin();
         Double amount = 4.0;
-        List<String> currencyList = new ArrayList<>();
-        currencyList.add("EUR");
-        currencyList.add("USD");
+        String currencyList = "EUR,USD";
         String courtBC = "{\"EUR\":10.00,\"USD\":5.00}";
 
         BitcoinData bitcoinData = new BitcoinData(amount, currencyList);
@@ -41,11 +39,7 @@ public class BitcoinTest {
         //Given
         Bitcoin bitcoin = new Bitcoin();
         Double amount = 4.0;
-        List<String> currencyList = new ArrayList<>();
-        currencyList.add("EUR");
-        currencyList.add("USD");
-        currencyList.add("AOA");
-        currencyList.add("ZZZ");
+        String currencyList = "EUR,USD,AOA,ZZZ";
 
         BitcoinData bitcoinData = new BitcoinData(amount, currencyList);
 
