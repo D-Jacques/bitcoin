@@ -7,11 +7,18 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
+
 //                                             Input,  Output
 public class Handler implements RequestHandler<BitcoinData, GatewayResponse> {
 
+    //USER : geeks
+    //MDP : ipi-mdd-324
+
     @Override
     public GatewayResponse handleRequest(BitcoinData bitcoinData, Context context) {
+
+        System.out.println(bitcoinData.toString());
 
         Bitcoin bitcoin = new Bitcoin();
         try {

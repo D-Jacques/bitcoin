@@ -35,6 +35,8 @@ public class Bitcoin {
         Genson genson = new Genson();
         Map<String, Object> map = genson.deserialize(courtBC, Map.class);
 
+        System.out.println(map);
+
         BitcoinOutput bitcoinOutput = new BitcoinOutput();
         for (String curency:bitcoinData.getCurrencyList()) {
             Double taux = Double.parseDouble(map.get(curency).toString());
