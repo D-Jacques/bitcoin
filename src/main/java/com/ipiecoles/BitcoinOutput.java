@@ -4,23 +4,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BitcoinOutput {
-    private Map<String, Double> currencyEquivalent = new HashMap<>();
+    private Map<String, Double> currenciesEquivalent = new HashMap<>();
     private Double bitcoinAmount;
 
     public BitcoinOutput() {
     }
 
-    public BitcoinOutput(Map<String, Double> currencyEquivalent, Double bitcoinAmount) {
-        this.currencyEquivalent = currencyEquivalent;
+    public BitcoinOutput(Map<String, Double> currenciesEquivalent, Double bitcoinAmount) {
+        this.currenciesEquivalent = currenciesEquivalent;
         this.bitcoinAmount = bitcoinAmount;
     }
 
-    public Map<String, Double> getCurrencyEquivalent() {
-        return currencyEquivalent;
+    public Map<String, Double> getCurrenciesEquivalent() {
+        return currenciesEquivalent;
     }
 
-    public void setCurrencyEquivalent(Map<String, Double> currencyEquivalent) {
-        this.currencyEquivalent = currencyEquivalent;
+    public void setCurrenciesEquivalent(Map<String, Double> currenciesEquivalent) {
+        this.currenciesEquivalent = currenciesEquivalent;
     }
 
     public Double getBitcoinAmount() {

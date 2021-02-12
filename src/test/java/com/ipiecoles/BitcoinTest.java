@@ -31,10 +31,8 @@ public class BitcoinTest {
 
         //Then
         Assertions.assertThat(data.getBitcoinAmount()).isEqualTo(4.0);
-        Assertions.assertThat(data.getCurrencyEquivalent().get("EUR")).isEqualTo(40.0);
-        Assertions.assertThat(data.getCurrencyEquivalent().get("USD")).isEqualTo(20.0);
-
-
+        Assertions.assertThat(data.getCurrenciesEquivalent().get("EUR")).isEqualTo(40.0);
+        Assertions.assertThat(data.getCurrenciesEquivalent().get("USD")).isEqualTo(20.0);
 
     }
 
@@ -47,6 +45,7 @@ public class BitcoinTest {
         currencyList.add("EUR");
         currencyList.add("USD");
         currencyList.add("AOA");
+        currencyList.add("ZZZ");
 
         BitcoinData bitcoinData = new BitcoinData(amount, currencyList);
 
@@ -59,10 +58,10 @@ public class BitcoinTest {
         //Then
 
         Assertions.assertThat(data.getBitcoinAmount()).isEqualTo(4.0);
-        Assertions.assertThat(data.getCurrencyEquivalent()).containsKeys("EUR", "USD", "AOA");
-        Assertions.assertThat(data.getCurrencyEquivalent().get("EUR")).isGreaterThan(0.0);
-        Assertions.assertThat(data.getCurrencyEquivalent().get("USD")).isGreaterThan(0.0);
-        Assertions.assertThat(data.getCurrencyEquivalent().get("AOA")).isGreaterThan(0.0);
+        Assertions.assertThat(data.getCurrenciesEquivalent()).containsKeys("EUR", "USD", "AOA");
+        Assertions.assertThat(data.getCurrenciesEquivalent().get("EUR")).isGreaterThan(0.0);
+        Assertions.assertThat(data.getCurrenciesEquivalent().get("USD")).isGreaterThan(0.0);
+        Assertions.assertThat(data.getCurrenciesEquivalent().get("AOA")).isGreaterThan(0.0);
 
 
     }

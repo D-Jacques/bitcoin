@@ -39,7 +39,7 @@ public class Bitcoin {
         for (String curency:bitcoinData.getCurrencyList()) {
             Double taux = Double.parseDouble(map.get(curency).toString());
             bitcoinOutput.setBitcoinAmount(bitcoinData.getBitcoinAmount());
-            bitcoinOutput.getCurrencyEquivalent().put(curency,bitcoinData.getBitcoinAmount()*taux);
+            bitcoinOutput.getCurrenciesEquivalent().put(curency,bitcoinData.getBitcoinAmount()*taux);
         }
 
         return bitcoinOutput;
