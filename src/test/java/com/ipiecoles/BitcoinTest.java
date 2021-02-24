@@ -50,7 +50,7 @@ public class BitcoinTest {
 
 
         //Then
-
+        System.out.println(data.toString());
         Assertions.assertThat(data.getBitcoinAmount()).isEqualTo(4.0);
         Assertions.assertThat(data.getCurrenciesEquivalent()).containsKeys("EUR", "USD", "AOA");
         Assertions.assertThat(data.getCurrenciesEquivalent().get("EUR")).isGreaterThan(0.0);

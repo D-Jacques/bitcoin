@@ -30,4 +30,16 @@ public class BitcoinOutput {
     public void setBitcoinAmount(Double bitcoinAmount) {
         this.bitcoinAmount = bitcoinAmount;
     }
+
+    @Override
+    public String toString() {
+        String mapCurrencies = "";
+        for(Map.Entry<String, Double> iterator: currenciesEquivalent.entrySet()){
+            mapCurrencies += "\""+iterator.getKey() + "\":" + iterator.getValue()+",";
+        }
+        return "{" + "\"bitcoinAmount\":"+bitcoinAmount+","
+                +"\"currenciesEquivalent\":{"+mapCurrencies+
+                    "}"+
+                '}';
+    }
 }
